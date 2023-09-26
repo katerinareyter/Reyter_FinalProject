@@ -1,0 +1,17 @@
+ЗАДАНИЕ 1
+
+SELECT c.login, COUNT(o."inDelivery") order_amount
+FROM "Couriers" c
+JOIN "Orders" o ON c.id = o."courierId"
+WHERE "inDelivery" = true
+GROUP BY login;
+
+ЗАДАНИЕ 2
+
+SELECT track, CASE
+				WHEN cancelled = true THEN -1
+				WHEN finished = true THEN 2
+				WHEN "inDelivery" = true THEN 1
+				ELSE 0
+				END order_status				
+FROM "Orders";
